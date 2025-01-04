@@ -5,6 +5,10 @@ import { redirect, useSearchParams } from "next/navigation";
 import Badges from "./badges";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Profile from "./profile";
+import { useEffect, useState } from "react";
+import { gitbadges } from "@/db/schema";
+import { InferSelectModel } from "drizzle-orm";
+import Loading from "@/components/ui/loading";
 
 export default function Page() {
   const searchParams = useSearchParams();
@@ -13,13 +17,38 @@ export default function Page() {
     redirect("/");
   }
 
+  const [loading, setLoading] = useState(false);
+  const [badges, setBadges] = useState<InferSelectModel<typeof gitbadges>[]>(
+    [],
+  );
+
+  useEffect(() => {
+    setLoading(true);
+    (async () => {
+      const request = await fetch(
+        `${window.location.origin}/api/badges?username=${username}`,
+      );
+      const data = await request.json();
+      setLoading(false);
+      setBadges(data.badges as InferSelectModel<typeof gitbadges>[]);
+    })();
+  }, [username]);
+
+  if (loading) {
+    return (
+      <div className="h-full w-full items-center justify-center">
+        <Loading />
+      </div>
+    );
+  }
+
   return (
     <main className="w-full h-full flex flex-col">
       <Navbar showSearchBar={true} />
 
-      <div className="w-full h-full flex flex-col-reverse md:flex-row">
-        <Badges username={username} />
-        <Profile username={username} />
+      <div className="w-full h-full flex flex-col-reverse md:flex-row items-center justify-center">
+        <Badges username={username} badges={badges} />
+        {badges?.length > 0 && <Profile username={username} />}
       </div>
     </main>
   );

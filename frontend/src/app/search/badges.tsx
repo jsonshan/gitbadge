@@ -1,42 +1,20 @@
 "use client";
 
 import Badge from "@/components/badges/badge";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import Loading from "@/components/ui/loading";
 import { Spotlight } from "@/components/ui/spotlight";
 import { gitbadges } from "@/db/schema";
 import { InferSelectModel } from "drizzle-orm";
-import { useEffect, useState } from "react";
 
-export default function Badges({ username }: { username: string }) {
-  const [loading, setLoading] = useState(false);
-  const [badges, setBadges] = useState<InferSelectModel<typeof gitbadges>[]>(
-    [],
-  );
-
-  useEffect(() => {
-    setLoading(true);
-    (async () => {
-      const request = await fetch(
-        `${window.location.origin}/api/badges?username=${username}`,
-      );
-      const data = await request.json();
-      setLoading(false);
-      setBadges(data.badges as InferSelectModel<typeof gitbadges>[]);
-    })();
-  }, [username]);
-
-  if (loading) {
+export default function Badges({
+  username,
+  badges,
+}: {
+  username: string;
+  badges: undefined | InferSelectModel<typeof gitbadges>[];
+}) {
+  if (!!!badges || badges.length === 0) {
     return (
-      <div className="flex-grow">
-        <Loading />
-      </div>
-    );
-  }
-
-  if (badges.length === 0) {
-    return (
-      <div className="h-full flex-grow-0 rounded-md flex md:items-center md:justify-center bg-background antialiased bg-grid-white/[0.02] relative overflow-hidden">
+      <div className="h-full flex-1 rounded-md flex md:items-center md:justify-center bg-background antialiased bg-grid-white/[0.02] relative overflow-hidden">
         <Spotlight
           className="-top-40 left-0 md:left-60 md:-top-20"
           fill="white"

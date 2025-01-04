@@ -47,7 +47,6 @@ export default function Navbar({ showSearchBar }: { showSearchBar: boolean }) {
                 <UserIcon />
                 <span>Sign out</span>
               </DropdownMenuItem>
-              e{" "}
             </DropdownMenuGroup>
           </DropdownMenuContent>
         </DropdownMenu>
