@@ -280,7 +280,7 @@ def check_polyglot_coder_badge(username, repos):
       if len(languages) >= 3:
         polyglot_count += 1  
 
-    if polyglot_count / len(repo) >= 0.6:
+    if polyglot_count / len(repo) >= 0.2:
       return True
     return False
 
