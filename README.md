@@ -1,5 +1,11 @@
 # gitbadge
 
+![GitBadge Logo](https://github.com/jsonshan/gitbadge/blob/main/frontend/public/assets/logo.png)
+
+- Production: [https://gitbadge-roan.vercel.app](https://gitbadge-roan.vercel.app)
+- Devpost submission: [https://devpost.com/software/gitbadge](https://devpost.com/software/gitbadge)
+- Demo Video: [https://youtu.be/y3JoZcGwpT8](https://youtu.be/y3JoZcGwpT8)
+
 ## Running
 
 ### Frontend
@@ -29,4 +35,3 @@
    DBNAME="POstgresql db name"
    ```
 3. Then run the worker using `python main.py`
-
