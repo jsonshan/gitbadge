@@ -22,13 +22,13 @@ import requests
 import os
 from datetime import datetime
 
-GITHUB_TOKEN = tokenVal.getToken()
+load_dotenv()
+GITHUB_TOKEN = os.getenv("GITHUB_TOKEN")
 
 ###########################################################################
 
 def fetchUsers():
     # Load environment variables from .env
-    load_dotenv()
 
     # Fetch variables
     USER = os.getenv("user")
