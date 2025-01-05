@@ -3,14 +3,21 @@
 import Navbar from "@/components/navbar";
 import { redirect, useSearchParams } from "next/navigation";
 import Badges from "./badges";
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Profile from "./profile";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { gitbadges } from "@/db/schema";
 import { InferSelectModel } from "drizzle-orm";
 import Loading from "@/components/ui/loading";
 
 export default function Page() {
+  return (
+    <Suspense>
+      <Search />
+    </Suspense>
+  );
+}
+
+function Search() {
   const searchParams = useSearchParams();
   const username = (searchParams.get("q") || "").trim();
   if (username === "") {
