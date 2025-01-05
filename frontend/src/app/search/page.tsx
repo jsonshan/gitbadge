@@ -3,7 +3,7 @@
 import Navbar from "@/components/navbar";
 import { redirect, useSearchParams } from "next/navigation";
 import Badges from "./badges";
-import Profile from "./profile";
+// import Profile from "./profile";
 import { Suspense, useEffect, useState } from "react";
 import { gitbadges } from "@/db/schema";
 import { InferSelectModel } from "drizzle-orm";
@@ -55,7 +55,7 @@ function Search() {
 
       <div className="w-full h-full flex flex-col-reverse md:flex-row items-center justify-center">
         <Badges username={username} badges={badges} />
-        {badges?.length > 0 && <Profile username={username} />}
+        {/* {badges?.length > 0 && <Profile username={username} />} */}
       </div>
     </main>
   );

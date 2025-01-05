@@ -31,16 +31,11 @@ export default function Badges({
     );
   }
 
-  const b = [];
-  for (let i = 0; i < 150; i++) {
-    b.push(badges[0]);
-  }
-
   return (
     <div className="flex-1 h-full p-8 flex flex-row items-center justify-center">
       <div className="w-full h-full flex flex-col gap-2">
         <div className="border rounded border-accent p-4 flex flex-row flex-wrap gap-4 items-start justify-start">
-          {b.map((badge, i) => {
+          {badges.map((badge, i) => {
             return <Badge key={i} badgeId={badge.badgeId} />;
           })}
         </div>
