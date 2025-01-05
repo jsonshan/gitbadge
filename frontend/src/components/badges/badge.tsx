@@ -10,14 +10,14 @@ import {
 
 const badgeIdToUrl: Map<string, string> = new Map([
   ["night-owl", "/assets/badges/0.webp"],
-  ["early_bird", "/assets/badges/0.webp"],
-  ["polygot", "/assets/badges/0.webp"],
-  ["summer", "/assets/badges/0.webp"],
-  ["winter", "/assets/badges/0.webp"],
-  ["spring", "/assets/badges/0.webp"],
-  ["autumn", "/assets/badges/0.webp"],
-  ["one_year", "/assets/badges/0.webp"],
-  ["five_years", "/assets/badges/0.webp"],
+  ["early_bird", "/assets/badges/early_bird.png"],
+  ["polygot", "/assets/badges/polygot.png"],
+  ["summer", "/assets/badges/summer.png"],
+  ["winter", "/assets/badges/winter.png"],
+  ["spring", "/assets/badges/spring.png"],
+  ["autumn", "/assets/badges/autumn.png"],
+  ["one_year", "/assets/badges/one_year.png"],
+  ["five_years", "/assets/badges/five_years.png"],
 ]);
 
 const badgeIdToDescription: Map<string, string> = new Map([
