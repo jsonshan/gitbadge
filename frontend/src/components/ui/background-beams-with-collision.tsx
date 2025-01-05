@@ -1,7 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
 import { motion, AnimatePresence } from "framer-motion";
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect, RefObject } from "react";
 
 export const BackgroundBeamsWithCollision = ({
   children,
@@ -79,8 +79,8 @@ export const BackgroundBeamsWithCollision = ({
         <CollisionMechanism
           key={beam.initialX + "beam-idx"}
           beamOptions={beam}
-          containerRef={containerRef}
-          parentRef={parentRef}
+          containerRef={containerRef as RefObject<HTMLDivElement>}
+          parentRef={parentRef as RefObject<HTMLDivElement>}
         />
       ))}
 
